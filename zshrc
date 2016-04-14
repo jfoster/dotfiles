@@ -23,6 +23,7 @@ if [[ -d $THEOS ]]; then
 fi
 
 eval "$(thefuck --alias fuck)"
+alias f=fuck
 
 source "$HOME/.zplug/zplug"
 
