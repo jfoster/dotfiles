@@ -1,5 +1,8 @@
 [user]
 	name = Infuriare
 	email = infuriare@users.noreply.github.com
+	signingkey = jacobrobinfoster@gmail.com
 [push]
 	default = simple
+[commit]
+	gpgsign = true
