@@ -10,7 +10,6 @@ brew 'archey'
 brew 'class-dump', args: ['HEAD']
 brew 'xz'
 brew 'coreutils'
-brew 'pkg-config'
 brew 'gnu-tar'
 brew 'dpkg'
 brew 'faac'
