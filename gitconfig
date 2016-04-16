@@ -1,7 +1,7 @@
 [user]
 	name = Infuriare
 	email = infuriare@users.noreply.github.com
-	signingkey = jacobrobinfoster@gmail.com
+	signingkey = 2CF1A76B
 [push]
 	default = simple
 [commit]
