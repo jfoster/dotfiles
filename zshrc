@@ -22,8 +22,33 @@ if [[ -d $THEOS ]]; then
     export PATH="$THEOS/bin:$PATH"
 fi
 
-eval "$(thefuck --alias fuck)"
-alias f=fuck
+if [[ -f ~/.gnupg/.gpg-agent-info && -n "$(pgrep gpg-agent)" ]]; then
+    source ~/.gnupg/.gpg-agent-info
+    export GPG_AGENT_INFO
+else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+fi
+
+if which thefuck > /dev/null; then
+    eval "$(thefuck --alias fuck)"
+    alias f=fuck
+fi
+
+# shell hooks
+
+if which nodenv > /dev/null; then 
+    eval "$(nodenv init -)"
+fi
+
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+fi
+
+if which rbenv > /dev/null; then
+    eval "$(rbenv init -)"
+fi
+
+# zplug
 
 source "$HOME/.zplug/zplug"
 
