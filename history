@@ -1,0 +1,30 @@
+mate $ZPLUG_HOME/packages.zsh
+zplug clean
+zplug clear
+zplug clean
+zplug clean
+zplug clean
+zplug clean
+zplug clean
+zplug clean
+zplug clean
+zplug clean
+mate $DOTFILES/history
+history
+brew upgrade
+subl Sync/Dev/Forks/just-install/
+ls -a
+mate .zshrc
+mate $ZPLUG_PACKAGES
+zstyle ':completion:*' menu select
+ls -a
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+zplug "Tarrasch/zsh-colors"
+red google
+mate .zshrc
+mate $ZPLUG_LOADFILE
+mate $ZPLUG_LOADFILE
+zplug load
+exec zsh
+rm .zshrc
