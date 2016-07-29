@@ -1,30 +1,13 @@
-mate $ZPLUG_HOME/packages.zsh
-zplug clean
-zplug clear
-zplug clean
-zplug clean
-zplug clean
-zplug clean
-zplug clean
-zplug clean
-zplug clean
-zplug clean
-mate $DOTFILES/history
-history
-brew upgrade
-subl Sync/Dev/Forks/just-install/
-ls -a
-mate .zshrc
-mate $ZPLUG_PACKAGES
-zstyle ':completion:*' menu select
-ls -a
-sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-zplug "Tarrasch/zsh-colors"
-red google
-mate .zshrc
-mate $ZPLUG_LOADFILE
-mate $ZPLUG_LOADFILE
-zplug load
-exec zsh
-rm .zshrc
+: 1469763380:0;dotfiles-sync
+: 1469763403:0;mate .zshrc
+: 1469763672:0;cd .files
+: 1469763675:0;ls
+: 1469763686:0;showhide
+: 1469763710:0;mate $(which showhide)
+: 1469763822:0;mv .zgenrc .files/zgenrc
+: 1469763827:0;dotfiles-sync
+: 1469763975:0;rm-ds-store
+: 1469763989:0;dotfiles-sync
+: 1469763995:0;cd .files
+: 1469764000:0;git status
+: 1469764008:0;git add .
