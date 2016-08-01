@@ -3,7 +3,7 @@ source $ZGEN_HOME/zgen.zsh
 if ! zgen saved
 then
 	zgen oh-my-zsh
-	zgen oh-my-zsh themes/duellj
+	zgen oh-my-zsh themes/philips
 	
 	zgen load zsh-users/zsh-autosuggestions
 	zgen load zsh-users/zsh-history-substring-search

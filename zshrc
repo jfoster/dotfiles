@@ -4,12 +4,14 @@ HISTFILE=$HOME/.history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-# global varibles
+# global variables
 
 export LANG=en_GB.UTF-8
 export EDITOR=mate
 
 export DOTFILES=$HOME/.files
+
+# path variables
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/opt/local/bin:$PATH"
@@ -22,7 +24,7 @@ fi
 
 export GOPATH=${GOPATH:="$HOME/Code/Go"}
 
-export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home)}
+export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home &>/dev/null)}
 if [[ -d $JAVA_HOME ]]; then
     export PATH="$JAVA_HOME/bin:$PATH"
 fi
