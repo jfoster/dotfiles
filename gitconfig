@@ -8,3 +8,5 @@
 	gpgsign = true
 [core]
 	excludesfile = /Users/jacob/.gitignore
+[alias]
+	unadd = reset HEAD
