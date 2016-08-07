@@ -1,0 +1,5 @@
+# zsh history
+
+HISTFILE=$HOME/.history
+HISTSIZE=100000
+SAVEHIST=100000

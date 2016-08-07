@@ -1,0 +1,27 @@
+# global variables
+
+export LANG=en_GB.UTF-8
+export EDITOR=mate
+
+# path variables
+
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/opt/local/bin:$PATH"
+
+export ANDROID_SDK=${ANDROID_SDK:="$HOME/Library/Android/sdk"}
+if [[ -d $ANDROID_SDK ]]; then
+	export PATH="$ANDROID_SDK/tools:$PATH"
+	export PATH="$ANDROID_SDK/platform-tools:$PATH"
+fi
+
+export GOPATH=${GOPATH:="$HOME/Code/Go"}
+
+export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home &>/dev/null)}
+if [[ -d $JAVA_HOME ]]; then
+	export PATH="$JAVA_HOME/bin:$PATH"
+fi
+
+export THEOS=${THEOS:="/opt/theos"}
+if [[ -d $THEOS ]]; then
+	export PATH="$THEOS/bin:$PATH"
+fi

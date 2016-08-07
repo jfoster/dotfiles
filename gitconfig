@@ -7,6 +7,6 @@
 [commit]
 	gpgsign = true
 [core]
-	excludesfile = /Users/jacob/.gitignore
+	excludesfile = $HOME/.gitignore
 [alias]
 	unadd = reset HEAD

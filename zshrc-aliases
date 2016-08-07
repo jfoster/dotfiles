@@ -1,0 +1,1 @@
+alias dirs="dirs -v"

@@ -1,7 +1,7 @@
 export ZGEN_HOME=$HOME/.zgen
 source $ZGEN_HOME/zgen.zsh
-if ! zgen saved
-then
+
+if ! zgen saved; then
 	zgen oh-my-zsh
 	zgen oh-my-zsh themes/philips
 	
