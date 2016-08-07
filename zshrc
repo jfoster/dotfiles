@@ -1,12 +1,10 @@
 cd $HOME
 
-export DOTFILES=$HOME/.files
+source ~/.zshrc-cfg
 
-source $DOTFILES/zshrc-cfg
+source ~/.zshrc-vars
+source ~/.zshrc-hooks
+source ~/.zshrc-aliases
 
-source $DOTFILES/zshrc-vars
-source $DOTFILES/zshrc-hooks
-source $DOTFILES/zshrc-aliases
-
-ZGEN_RESET_ON_CHANGE=($DOTFILES/zshrc-zgen)
-source $DOTFILES/zshrc-zgen
+ZGEN_RESET_ON_CHANGE=(~/.zshrc-zgen)
+source ~/.zshrc-zgen
