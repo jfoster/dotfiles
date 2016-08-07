@@ -1,4 +1,4 @@
-cd $HOME
+cd ~
 
 source ~/.zshrc-cfg
 
