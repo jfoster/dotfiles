@@ -1,3 +1,7 @@
+if ! which zgen > /dev/null; then
+    git clone https://github.com/tarjoilija/zgen.git .zgen
+fi
+
 export ZGEN_HOME=$HOME/.zgen
 source $ZGEN_HOME/zgen.zsh
 
