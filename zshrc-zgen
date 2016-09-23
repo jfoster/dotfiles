@@ -1,4 +1,4 @@
-if ! which zgen > /dev/null; then
+if type zgen == "zgen not found"; then
     git clone https://github.com/tarjoilija/zgen.git .zgen
 fi
 
