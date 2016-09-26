@@ -8,10 +8,14 @@ export VISUAL=mate
 export DOTFILES=$HOME/.files
 export LOCAL=$HOME/.local
 
+export PROJECTS=$HOME/Projects
+
 # path variables
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$LOCAL/bin:$PATH"
+
+export GOPATH=${GOPATH:="$PROJECTS/Go"}
 
 export ANDROID_SDK=${ANDROID_SDK:="$HOME/Library/Android/sdk"}
 if [[ -d $ANDROID_SDK ]]; then
@@ -19,14 +23,12 @@ if [[ -d $ANDROID_SDK ]]; then
 	export PATH="$ANDROID_SDK/platform-tools:$PATH"
 fi
 
-export GOPATH=${GOPATH:="$HOME/Code/Go"}
-
 export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home &>/dev/null)}
 if [[ -d $JAVA_HOME ]]; then
 	export PATH="$JAVA_HOME/bin:$PATH"
 fi
 
-export THEOS=${THEOS:="/opt/theos"}
+export THEOS=${THEOS:="$HOME/.theos"}
 if [[ -d $THEOS ]]; then
 	export PATH="$THEOS/bin:$PATH"
 fi
