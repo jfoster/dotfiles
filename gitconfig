@@ -10,3 +10,5 @@
 	excludesfile = $HOME/.gitignore
 [alias]
 	unadd = reset HEAD
+[credential]
+	helper = osxkeychain
