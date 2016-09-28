@@ -16,6 +16,9 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$LOCAL/bin:$PATH"
 
 export GOPATH=${GOPATH:="$PROJECTS/Go"}
+if [[ -d $GOPATH ]]; then
+	export PATH="$GOPATH/bin:$PATH"
+fi
 
 export ANDROID_SDK=${ANDROID_SDK:="$HOME/Library/Android/sdk"}
 if [[ -d $ANDROID_SDK ]]; then
