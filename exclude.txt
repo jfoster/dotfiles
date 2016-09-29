@@ -1,7 +1,8 @@
-exclude.txt
 .
 ..
 .git
 .gitignore
 .DS_Store
+exclude.txt
+LICENSE.txt
 README.md
