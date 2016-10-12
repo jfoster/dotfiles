@@ -7,7 +7,7 @@
 [commit]
 	gpgsign = true
 [core]
-	excludesfile = $HOME/.gitignore
+	excludesfile = ~/.gitignore_global
 [alias]
 	unadd = reset HEAD
 [credential]
