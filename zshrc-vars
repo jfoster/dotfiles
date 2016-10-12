@@ -26,7 +26,7 @@ if [[ -d $ANDROID_SDK ]]; then
 	export PATH="$ANDROID_SDK/platform-tools:$PATH"
 fi
 
-export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home &>/dev/null)}
+export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home)}
 if [[ -d $JAVA_HOME ]]; then
 	export PATH="$JAVA_HOME/bin:$PATH"
 fi
