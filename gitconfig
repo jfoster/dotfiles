@@ -8,6 +8,7 @@
 	gpgsign = true
 [core]
 	excludesfile = ~/.gitignore_global
+	editor = vim
 [alias]
 	unadd = reset HEAD
 [credential]
