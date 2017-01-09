@@ -11,7 +11,5 @@
 	editor = vim
 [alias]
 	unadd = reset HEAD
-[credential]
-	helper = osxkeychain
 [hub]
 	protocol = https
