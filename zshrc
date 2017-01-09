@@ -1,5 +1,3 @@
-cd ~
-
 source ~/.zshrc-cfg
 
 source ~/.zshrc-vars
