@@ -1,7 +1,7 @@
 [user]
 	email = jfoster@users.noreply.github.com
 	name = jfoster
-	signingkey = 196308B6
+	signingkey = C28B7E3654665DAB
 [push]
 	default = simple
 [commit]
@@ -13,3 +13,5 @@
 	unadd = reset HEAD
 [hub]
 	protocol = https
+[gpg]
+	program = gpg1
