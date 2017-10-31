@@ -22,6 +22,8 @@ export PROJECTS=$HOME/Projects
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$LOCAL/bin:$PATH"
+
+export PATH="/usr/local/opt/gnupg@2.0/bin:$PATH"
 export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
 
 export GOPATH=${GOPATH:="$PROJECTS/Go"}
