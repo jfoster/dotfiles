@@ -69,8 +69,8 @@ if which thefuck > /dev/null; then
     eval "$(thefuck --alias fuck)"
 fi
 
-if which gpg-agent > /dev/null; then
-    if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+if which gpg-agent > /dev/null && ! pgrep -x "gpg-agent" > /dev/null; then
+    if [ -f ~/.gnupg/.gpg-agent-info ]; then
         source ~/.gnupg/.gpg-agent-info
         export GPG_AGENT_INFO
     else
