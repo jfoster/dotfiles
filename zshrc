@@ -14,38 +14,32 @@ export VISUAL=mate
 export API_KEY="a97e4b54607c"
 
 export DOTFILES=$HOME/.files
-export LOCAL=$HOME/.local
 
 export PROJECTS=$HOME/Projects
 
-# path variables
+# high priority path variables
 
+export PATH="$DOTFILES/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-export PATH="$LOCAL/bin:$PATH"
-
 export PATH="/usr/local/opt/gnupg@2.0/bin:$PATH"
 export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
 
-export GOPATH=${GOPATH:="$PROJECTS/Go"}
-if [[ -d $GOPATH ]]; then
-    export PATH="$GOPATH/bin:$PATH"
-fi
-
 export ANDROID_HOME=${ANDROID_HOME:="$HOME/Library/Android/sdk"}
-if [[ -d $ANDROID_HOME ]]; then
-    export PATH="$ANDROID_HOME/tools:$PATH"
-    export PATH="$ANDROID_HOME/platform-tools:$PATH"
-fi
+export PATH="$ANDROID_HOME/tools:$PATH"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+
+export GOPATH=${GOPATH:="$PROJECTS/Go"}
+export PATH="$GOPATH/bin:$PATH"
 
 export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home)}
-if [[ -d $JAVA_HOME ]]; then
-    export PATH="$JAVA_HOME/bin:$PATH"
-fi
+export PATH="$JAVA_HOME/bin:$PATH"
 
 export THEOS=${THEOS:="$HOME/.theos"}
-if [[ -d $THEOS ]]; then
-    export PATH="$THEOS/bin:$PATH"
-fi
+export PATH="$THEOS/bin:$PATH"
+
+# low priority path variables
+
+export PATH="$PATH:/Applications/Wine Stable.app/Contents/Resources/wine/bin"
 
 # shell hooks
 

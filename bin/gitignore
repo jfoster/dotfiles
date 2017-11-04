@@ -1,0 +1,7 @@
+#!/bin/sh
+if [[ $1 ]]; then
+	curl -L -s -o .gitignore https://www.gitignore.io/api/$1
+	echo ".gitignore created for $1"
+else
+	echo "$1 is not a valid gitignore.io preset"
+fi
