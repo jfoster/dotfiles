@@ -11,24 +11,23 @@ export LANG=en_GB.UTF-8
 export EDITOR=vim
 export VISUAL=mate
 
-export API_KEY="a97e4b54607c"
-
 export DOTFILES=$HOME/.files
 
 export PROJECTS=$HOME/Projects
 
+source ~/.zshrc-priv
+
 # high priority path variables
 
 export PATH="$DOTFILES/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/gnupg@2.0/bin:$PATH"
 export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
 
-export ANDROID_HOME=${ANDROID_HOME:="$HOME/Library/Android/sdk"}
-export PATH="$ANDROID_HOME/tools:$PATH"
-export PATH="$ANDROID_HOME/platform-tools:$PATH"
+export ANDROID_HOME=${ANDROID_HOME:="/usr/local/share/android-sdk"}
 
-export GOPATH=${GOPATH:="$PROJECTS/Go"}
+export GOPATH=${GOPATH:="$HOME/Go"}
 export PATH="$GOPATH/bin:$PATH"
 
 export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home)}
