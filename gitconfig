@@ -13,3 +13,5 @@
 	unadd = reset HEAD
 [hub]
 	protocol = https
+[gpg]
+	program = gpg
