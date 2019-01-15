@@ -1,12 +1,12 @@
 export ZGEN_HOME=$HOME/.zgen
 
 if [ ! -d $ZGEN_HOME ]; then
-    git clone https://github.com/tarjoilija/zgen.git .zgen
+	git clone https://github.com/tarjoilija/zgen.git .zgen
 fi
 
-source $ZGEN_HOME/zgen.zsh
+if ! source "$HOME/.zgen/init.zsh"; then
+	source $ZGEN_HOME/zgen.zsh
 
-if ! zgen saved; then
 	zgen oh-my-zsh
 	zgen oh-my-zsh themes/philips
 	
