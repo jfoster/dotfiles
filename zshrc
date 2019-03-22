@@ -59,15 +59,21 @@ if [ -f /usr/libexec/java_home ]; then export JAVA_HOME=${JAVA_HOME:=$(/usr/libe
 
 # path variables
 
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/gnupg@2.0/bin:$PATH"
-export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
-export PATH="/usr/local/opt/qt/bin:$PATH"
-export PATH="/usr/local/opt/gettext/bin:$PATH"
+function path() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="$1${PATH:+":$PATH"}"
+    fi
+}
 
-export PATH="$DOTFILES/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$GOPATH/bin:$PATH"
-export PATH="$JAVA_HOME/bin:$PATH"
-export PATH="$MXE_HOME/usr/bin:$PATH"
-export PATH="$THEOS/bin:$PATH"
+path "/usr/local/sbin"
+path "/usr/local/opt/gnupg@2.0/bin"
+path "/usr/local/opt/gpg-agent/bin"
+path "/usr/local/opt/qt/bin"
+path "/usr/local/opt/gettext/bin"
+
+path "$DOTFILES/bin"
+path "$HOME/.local/bin"
+path "$GOPATH/bin"
+path "$JAVA_HOME/bin"
+path "$MXE_HOME/usr/bin"
+path "$THEOS/bin"
