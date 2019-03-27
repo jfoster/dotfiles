@@ -16,11 +16,16 @@ HISTFILE=$HOME/.history
 HISTSIZE=100000
 SAVEHIST=100000
 
-# shell hooks
+# lazy load functions
 
 git() {
 	eval "$(hub alias -s)"
 	hub "$@"
+}
+
+jenv() {
+	eval "$(command jenv init -)"
+	jenv "$@"
 }
 
 wine32() {
@@ -31,12 +36,12 @@ wine64() {
 	WINEPREFIX=$HOME/.wine64 wine "$@"
 }
 
+# aliases
+
 if which thefuck > /dev/null; then
 	eval $(thefuck --alias fuck)
-	eval $(thefuck --alias f)
+	alias f="fuck"
 fi
-
-# aliases
 
 alias dirs="dirs -v"
 alias cask="brew cask"
@@ -55,7 +60,7 @@ export GOPATH=${GOPATH:="$HOME/Go"}
 export MXE_HOME=${MXE_HOME:="$HOME/.mxe"}
 export THEOS=${THEOS:="$HOME/.theos"}
 export ANDROID_HOME=${ANDROID_HOME:="/usr/local/share/android-sdk"}
-if [ -f /usr/libexec/java_home ]; then export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home)}; fi
+#if [ -f /usr/libexec/java_home ]; then export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home)}; fi
 
 # path variables
 
