@@ -1,15 +1,3 @@
-# source additional files
-
-if [ -f ~/.zshrc-priv ]
-then
-	source ~/.zshrc-priv
-fi
-
-# zgen
-
-ZGEN_RESET_ON_CHANGE=(~/.zgenrc)
-source ~/.zgenrc
-
 # zsh config
 
 HISTFILE=$HOME/.history
@@ -26,18 +14,20 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_ENV_FILTERING=1
 
 export DOTFILES=$HOME/.files
-export GOPATH=${GOPATH:="$HOME/Go"}
+
+export ANDROID_HOME=${ANDROID_HOME:="/usr/local/share/android-sdk"}
+export GOPATH=${GOPATH:="$HOME/.Go"}
 export MXE_HOME=${MXE_HOME:="$HOME/.mxe"}
 export THEOS=${THEOS:="$HOME/.theos"}
-export ANDROID_HOME=${ANDROID_HOME:="/usr/local/share/android-sdk"}
+export ZGEN_HOME=${ZGEN_HOME:="/usr/local/opt/zgen"}
 #if [ -f /usr/libexec/java_home ]; then export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home)}; fi
 
-# pathadd variables
+# path variables
 
 function pathadd() {
-    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-        PATH="$1${PATH:+":$PATH"}"
-    fi
+	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+		PATH="$1${PATH:+":$PATH"}"
+	fi
 }
 
 pathadd "/usr/local/sbin"
@@ -85,4 +75,17 @@ if which thefuck > /dev/null; then
 fi
 
 alias dirs="dirs -v"
-alias cask="brew cask"
+alias refresh="exec $SHELL -l"
+
+# source additional files
+
+if [ -f ~/.zshrc-priv ]; then
+	source ~/.zshrc-priv
+fi
+
+# zgen
+
+if [ -f ~/.zgenrc ]; then
+	ZGEN_RESET_ON_CHANGE=(~/.zgenrc)
+	source ~/.zgenrc
+fi
