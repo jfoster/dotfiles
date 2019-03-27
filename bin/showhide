@@ -1,7 +1,0 @@
-#!/bin/sh
-ASAF=$(defaults read com.apple.Finder AppleShowAllFiles)
-if [[ $ASAF == "1" ]]; then
-	defaults write com.apple.Finder AppleShowAllFiles 0 && killall Finder
-else
-	defaults write com.apple.Finder AppleShowAllFiles 1 && killall Finder
-fi
