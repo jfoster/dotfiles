@@ -17,8 +17,8 @@ export DOTFILES=$HOME/.files
 
 export ANDROID_HOME=${ANDROID_HOME:="/usr/local/share/android-sdk"}
 export GOPATH=${GOPATH:="$HOME/.Go"}
-export MXE_HOME=${MXE_HOME:="$HOME/.mxe"}
-export THEOS=${THEOS:="$HOME/.theos"}
+export MXE_HOME=${MXE_HOME:="/usr/local/opt/mxe"}
+export THEOS=${THEOS:="/usr/local/opt/theos"}
 export ZGEN_HOME=${ZGEN_HOME:="/usr/local/opt/zgen"}
 #if [ -f /usr/libexec/java_home ]; then export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home)}; fi
 
@@ -59,12 +59,12 @@ if [ $commands[jenv] ]; then
 	}
 fi
 
-wine32() {
+wine() {
 	WINEPREFIX=$HOME/.wine32 wine "$@"
 }
 
 wine64() {
-	WINEPREFIX=$HOME/.wine64 wine "$@"
+	WINEPREFIX=$HOME/.wine64 wine64 "$@"
 }
 
 # aliases
