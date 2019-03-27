@@ -10,23 +10,64 @@ fi
 ZGEN_RESET_ON_CHANGE=(~/.zgenrc)
 source ~/.zgenrc
 
-# zsh history
+# zsh config
 
 HISTFILE=$HOME/.history
 HISTSIZE=100000
 SAVEHIST=100000
 
+# global variables
+
+export LANG=en_GB.UTF-8
+export EDITOR=vim
+export VISUAL=subl
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_ENV_FILTERING=1
+
+export DOTFILES=$HOME/.files
+export GOPATH=${GOPATH:="$HOME/Go"}
+export MXE_HOME=${MXE_HOME:="$HOME/.mxe"}
+export THEOS=${THEOS:="$HOME/.theos"}
+export ANDROID_HOME=${ANDROID_HOME:="/usr/local/share/android-sdk"}
+#if [ -f /usr/libexec/java_home ]; then export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home)}; fi
+
+# pathadd variables
+
+function pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="$1${PATH:+":$PATH"}"
+    fi
+}
+
+pathadd "/usr/local/sbin"
+pathadd "/usr/local/opt/qt/bin"
+pathadd "/usr/local/opt/gettext/bin"
+
+pathadd "$DOTFILES/bin"
+pathadd "$HOME/.local/bin"
+pathadd "$GOPATH/bin"
+pathadd "$JAVA_HOME/bin"
+pathadd "$MXE_HOME/usr/bin"
+pathadd "$THEOS/bin"
+
 # lazy load functions
 
-git() {
-	eval "$(hub alias -s)"
-	hub "$@"
-}
+if [ $commands[hub] ]; then
+	git() {
+		unfunction "$0"
+		eval "$(hub alias -s)"
+		$0 "$@"
+	}
+fi
 
-jenv() {
-	eval "$(command jenv init -)"
-	jenv "$@"
-}
+if [ $commands[jenv] ]; then
+	jenv() {
+		unfunction "$0"
+		eval "$(command jenv init -)"
+		$0 "$@"
+	}
+fi
 
 wine32() {
 	WINEPREFIX=$HOME/.wine32 wine "$@"
@@ -45,40 +86,3 @@ fi
 
 alias dirs="dirs -v"
 alias cask="brew cask"
-
-# global variables
-
-export LANG=en_GB.UTF-8
-export EDITOR=vim
-export VISUAL=subl
-
-export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_NO_ENV_FILTERING=1
-
-export DOTFILES=$HOME/.files
-export GOPATH=${GOPATH:="$HOME/Go"}
-export MXE_HOME=${MXE_HOME:="$HOME/.mxe"}
-export THEOS=${THEOS:="$HOME/.theos"}
-export ANDROID_HOME=${ANDROID_HOME:="/usr/local/share/android-sdk"}
-#if [ -f /usr/libexec/java_home ]; then export JAVA_HOME=${JAVA_HOME:=$(/usr/libexec/java_home)}; fi
-
-# path variables
-
-function path() {
-    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-        PATH="$1${PATH:+":$PATH"}"
-    fi
-}
-
-path "/usr/local/sbin"
-path "/usr/local/opt/gnupg@2.0/bin"
-path "/usr/local/opt/gpg-agent/bin"
-path "/usr/local/opt/qt/bin"
-path "/usr/local/opt/gettext/bin"
-
-path "$DOTFILES/bin"
-path "$HOME/.local/bin"
-path "$GOPATH/bin"
-path "$JAVA_HOME/bin"
-path "$MXE_HOME/usr/bin"
-path "$THEOS/bin"
