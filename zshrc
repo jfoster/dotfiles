@@ -35,15 +35,15 @@ pathadd "/usr/local/opt/qt/bin"
 pathadd "/usr/local/opt/gettext/bin"
 
 pathadd "$DOTFILES/bin"
-pathadd "$HOME/.local/bin"
 pathadd "$GOPATH/bin"
 pathadd "$JAVA_HOME/bin"
 pathadd "$MXE_HOME/usr/bin"
 pathadd "$THEOS/bin"
 
-# lazy load functions
+# aliases + functions
 
 if [ $commands[hub] ]; then
+	# lazy load hub
 	git() {
 		unfunction "$0"
 		eval "$(hub alias -s)"
@@ -52,6 +52,7 @@ if [ $commands[hub] ]; then
 fi
 
 if [ $commands[jenv] ]; then
+	# lazy load jenv
 	jenv() {
 		unfunction "$0"
 		eval "$(command jenv init -)"
@@ -59,19 +60,15 @@ if [ $commands[jenv] ]; then
 	}
 fi
 
-wine() {
-	WINEPREFIX=$HOME/.wine32 wine "$@"
-}
-
-wine64() {
-	WINEPREFIX=$HOME/.wine64 wine64 "$@"
-}
-
-# aliases
-
-if which thefuck > /dev/null; then
+if [ $commands[thefuck] ]; then
 	eval $(thefuck --alias fuck)
 	alias f="fuck"
+fi
+
+if [ $commands[wine] ]; then
+	wine32() {
+		WINEPREFIX=$HOME/.wine32 wine "$@"
+	}
 fi
 
 alias dirs="dirs -v"
