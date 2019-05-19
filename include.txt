@@ -1,6 +1,0 @@
-gitconfig
-gitignore_global
-nicrc
-zgenrc
-zshrc
-zshrc-priv
