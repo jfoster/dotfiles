@@ -1,5 +1,7 @@
 # zsh config
 
+zmodload zsh/zprof
+
 HISTFILE=$HOME/.history
 HISTSIZE=100000
 SAVEHIST=100000
@@ -37,6 +39,8 @@ pathadd "$MXE_HOME/usr/bin"
 
 # zgen
 
+export ZGEN_AUTOLOAD_COMPINIT=0
+
 if [ -f ~/.zgenrc ]; then
 	ZGEN_RESET_ON_CHANGE=(~/.zgenrc)
 	source ~/.zgenrc
@@ -44,6 +48,7 @@ fi
 
 # aliases + functions
 
+alias clear="clear && printf '\e[3J'"
 alias refreshenv="exec $SHELL -l"
 
 if type "gi" > /dev/null; then
@@ -59,37 +64,21 @@ if [ $commands[thefuck] ]; then
 fi
 
 if [ $commands[jenv] ]; then
-	java() {
-		unfunction "$0"
-		eval "$(jenv init - --no-rehash)"
-		$0 "$@"
-	}
+	eval "$(jenv init - --no-rehash)"
 fi
 
 if [ $commands[nodenv] ]; then
-	node() {
-		unfunction "$0"
-		eval "$(nodenv init - --no-rehash)"
-		$0 "$@"
-	}
+	eval "$(nodenv init - --no-rehash)"
 fi
 
 if [ $commands[pyenv] ]; then
-	python() {
-		unfunction "$0"
 	eval "$(pyenv init - --no-rehash)"
-		$0 "$@"
-	}
 fi
 
 if [ $commands[rbenv] ]; then
 	local RBENV_SHIMS="${RBENV_ROOT:-${HOME}/.rbenv}/shims"
 	export PATH="${RBENV_SHIMS}:${PATH}"
-	ruby() {
-		unfunction "$0"
-		eval "$(rbenv init - --no-rehash)"
-		$0 "$@"
-	}
+	eval "$(rbenv init - --no-rehash)"
 fi
 
 if [ $commands[wine] ]; then

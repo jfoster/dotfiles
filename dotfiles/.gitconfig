@@ -1,7 +1,7 @@
 [user]
 	email = jfoster@users.noreply.github.com
 	name = jfoster
-	signingkey = C28B7E3654665DAB
+	signingkey = 908A95DF
 [push]
 	default = simple
 [commit]
