@@ -1,6 +1,8 @@
 # zsh config
 
 zmodload zsh/zprof
+setopt inc_append_history
+setopt share_history
 
 HISTFILE=$HOME/.history
 HISTSIZE=100000

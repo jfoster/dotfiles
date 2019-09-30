@@ -10,8 +10,10 @@
 	excludesfile = ~/.gitignore_global
 	editor = vim
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	hooksPath = /Users/jfoster/.files/dotfiles/.git-templates/hooks/
 [alias]
 	unadd = reset HEAD
+	rename = "!f() { hub api --flat -XPATCH repos/{owner}/{repo} -f name=$1 | grep .svn_url | awk '/.ssh_url/ {print $2}' | xargs git remote set-url origin; }; f"
 [hub]
 	protocol = https
 [gpg]
