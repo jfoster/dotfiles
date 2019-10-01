@@ -13,7 +13,8 @@
 	hooksPath = /Users/jfoster/.files/dotfiles/.git-templates/hooks/
 [alias]
 	unadd = reset HEAD
-	rename = "!f() { hub api --flat -XPATCH repos/{owner}/{repo} -f name=$1 | grep .svn_url | awk '/.ssh_url/ {print $2}' | xargs git remote set-url origin; }; f"
+	archive-repo = "!f() { hub api -XPATCH repos/{owner}/{repo} -f archived=true > /dev/null; }; f"
+	rename-repo = "!f() { hub api -t -XPATCH repos/{owner}/{repo} -f name=$1 | grep .svn_url | awk '/.svn_url/ {print $2}' | xargs git remote set-url origin; }; f"
 [hub]
 	protocol = https
 [gpg]
