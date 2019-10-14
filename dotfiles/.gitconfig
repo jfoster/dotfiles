@@ -7,14 +7,15 @@
 [commit]
 	gpgsign = true
 [core]
-	excludesfile = ~/.gitignore_global
 	editor = vim
+	excludesfile = ~/.gitignore_global
+	hooksPath = ~/.files/dotfiles/.git-templates/hooks/
 	pager = diff-so-fancy | less --tabs=4 -RFX
-	hooksPath = /Users/jfoster/.files/dotfiles/.git-templates/hooks/
 [alias]
-	unadd = reset HEAD
 	archive-repo = "!f() { hub api -XPATCH repos/{owner}/{repo} -f archived=true > /dev/null; }; f"
+	create = "!f() { hub create && git push --set-upstream origin master; }; f"
 	rename-repo = "!f() { hub api -t -XPATCH repos/{owner}/{repo} -f name=$1 | grep .svn_url | awk '/.svn_url/ {print $2}' | xargs git remote set-url origin; }; f"
+	unadd = reset HEAD
 [hub]
 	protocol = https
 [gpg]

@@ -1,6 +1,5 @@
 # zsh config
 
-zmodload zsh/zprof
 setopt inc_append_history
 setopt share_history
 
@@ -8,23 +7,7 @@ HISTFILE=$HOME/.history
 HISTSIZE=100000
 SAVEHIST=100000
 
-# global variables
-
-export LANG=en_GB.UTF-8
-export EDITOR=vim
-export VISUAL=subl
-
-export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_NO_ENV_FILTERING=1
-
-export DOTFILES=$HOME/.files
-export ANDROID_HOME=${ANDROID_HOME:="/usr/local/share/android-sdk"}
-export GOPATH=${GOPATH:="$HOME/.Go"}
-export MXE_HOME=${MXE_HOME:="$HOME/.mxe"}
-export THEOS=${THEOS:="/usr/local/opt/theos"}
-export ZGEN_HOME=${ZGEN_HOME:="/usr/local/opt/zgen"}
-
-# path variables
+# vars
 
 function pathadd() {
 	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
@@ -32,12 +15,28 @@ function pathadd() {
 	fi
 }
 
-pathadd "/usr/local/sbin"
-pathadd "/usr/local/opt/gettext/bin"
+export LANG=en_GB.UTF-8
+export EDITOR=vim
+export VISUAL=code
 
+export DOTFILES=$HOME/.files
 pathadd "$DOTFILES/bin"
+
+export ANDROID_HOME=${ANDROID_HOME:="/usr/local/share/android-sdk"}
+
+export GO111MODULE=on
+export GOPATH=${GOPATH:="$HOME/.go"}
 pathadd "$GOPATH/bin"
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_ENV_FILTERING=1
+
+export MXE_HOME=${MXE_HOME:="$HOME/.mxe"}
 pathadd "$MXE_HOME/usr/bin"
+
+export THEOS=${THEOS:="/usr/local/opt/theos"}
+
+export ZGEN_HOME=${ZGEN_HOME:="/usr/local/opt/zgen"}
 
 # zgen
 
@@ -63,6 +62,11 @@ fi
 
 if [ $commands[thefuck] ]; then
 	eval $(thefuck --alias fuck)
+fi
+
+if [ $commands[goenv] ]; then
+	export GOENV_GOPATH_PREFIX="${GOPATH}"
+	eval "$(goenv init - --no-rehash)"
 fi
 
 if [ $commands[jenv] ]; then
