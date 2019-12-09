@@ -19,6 +19,10 @@ export LANG=en_GB.UTF-8
 export EDITOR=vim
 export VISUAL=code
 
+if [ -f ~/.priv ]; then
+	source ~/.priv
+fi
+
 export DOTFILES=$HOME/.files
 pathadd "$DOTFILES/bin"
 
@@ -31,7 +35,7 @@ pathadd "$GOPATH/bin"
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_ENV_FILTERING=1
 
-export MXE_HOME=${MXE_HOME:="$HOME/.mxe"}
+export MXE_HOME=${MXE_HOME:="/usr/local/opt/mxe"}
 pathadd "$MXE_HOME/usr/bin"
 
 export THEOS=${THEOS:="/usr/local/opt/theos"}
@@ -54,6 +58,10 @@ alias refreshenv="exec $SHELL -l"
 
 if type "gi" > /dev/null; then
 	alias gitignore="gi"
+fi
+
+if [ $commands[term] ]; then
+	alias term="term -t"
 fi
 
 if [ $commands[hub] ]; then
