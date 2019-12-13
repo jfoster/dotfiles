@@ -72,6 +72,10 @@ if [ $commands[thefuck] ]; then
 	eval $(thefuck --alias fuck)
 fi
 
+if [ $commands[direnv] ]; then
+	eval "$(direnv hook zsh)"
+fi
+
 if [ $commands[goenv] ]; then
 	export GOENV_GOPATH_PREFIX="${GOPATH}"
 	eval "$(goenv init - --no-rehash)"
