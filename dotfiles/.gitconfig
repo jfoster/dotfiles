@@ -1,0 +1,29 @@
+[user]
+	email = jacobfoster@pm.me
+	name = jfoster
+	signingkey = 338DF109
+[push]
+	default = simple
+[commit]
+	gpgsign = true
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+	hooksPath = ~/.files/dotfiles/.git-templates/hooks/
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	autocrlf = input
+[alias]
+	archive-repo = "!f() { hub api -XPATCH repos/{owner}/{repo} -f archived=true > /dev/null; }; f"
+	private-repo = "!f() { hub api -XPATCH repos/{owner}/{repo} -f private=true > /dev/null; }; f"
+	public-repo = "!f() { hub api -XPATCH repos/{owner}/{repo} -f private=false > /dev/null; }; f"
+	create = "!f() { hub create && git push --set-upstream origin master; }; f"
+	rename-repo = "!f() { hub api -t -XPATCH repos/{owner}/{repo} -f name=$1 | grep .svn_url | awk '/.svn_url/ {print $2}' | xargs git remote set-url origin; }; f"
+	resign = "!r() { git filter-branch --commit-filter 'if [ "$GIT_COMMITTER_EMAIL" = "$1" ] then git commit-tree -S "$@"; fi' -- --all; }; r"
+	unadd = reset HEAD
+[hub]
+	protocol = https
+[gpg]
+	program = gpg
+[credential]
+	helper = osxkeychain
+ 

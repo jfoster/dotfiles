@@ -1,0 +1,5 @@
+#!/bin/sh
+brew cleanup -s;
+if [[ $1 == "--cache" ]]; then
+    rm -rf $(brew --cache)/*
+fi

@@ -1,0 +1,8 @@
+#!/bin/sh
+if [[ $1 ]]; then
+    echo "$1"
+    defaults write com.apple.dock tilesize -int $1;
+else
+    defaults write com.apple.dock tilesize -int 56;
+fi
+killall Dock;

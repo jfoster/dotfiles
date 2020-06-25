@@ -1,0 +1,21 @@
+if [ -d "$ZGEN_HOME" ]; then
+	export ZGEN_DIR=$ZGEN_HOME
+
+	if ! source "$ZGEN_DIR/init.zsh"; then
+		source $ZGEN_DIR/zgen.zsh
+
+		zgen oh-my-zsh
+		zgen oh-my-zsh themes/philips
+		zgen oh-my-zsh plugins/per-directory-history
+		zgen oh-my-zsh plugins/gitignore
+
+		zgen load zsh-users/zsh-autosuggestions
+		zgen load zsh-users/zsh-completions
+		zgen load zsh-users/zsh-history-substring-search
+
+		zgen load zdharma/fast-syntax-highlighting
+		zgen load zdharma/history-search-multi-word
+
+		zgen save
+	fi
+fi
