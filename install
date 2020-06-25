@@ -1,8 +1,11 @@
 #!/bin/sh
-DOTFILES="$HOME/.files/dotfiles/"
-for file in $(find $DOTFILES -name '.*')
+DOTFILES="$HOME/.files/dotfiles"
+for file in $(find $DOTFILES -name '.*' -maxdepth 1)
 do
-    file=$(basename $file)
-    echo "Creating symlink to $file in $HOME."
-    ln -sf "$DOTFILES/$file" "$HOME/$file"
+    f=$(basename $file)
+    if [[ $f == ".DS_Store" ]]; then
+        continue
+    fi
+    echo "Creating symlink to $f in $HOME."
+    ln -sf "$DOTFILES/$f" "$HOME"
 done
