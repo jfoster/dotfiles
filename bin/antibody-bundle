@@ -1,0 +1,2 @@
+#!/bin/sh
+antibody bundle < ~/.zsh_plugins.txt > ~/.antibodyrc

@@ -27,18 +27,32 @@ fi
 # dotfiles
 if [ -d ~/.files ]; then
 	export DOTFILES=$HOME/.files
-	pathadd "$DOTFILES/bin"
-	pathadd "$DOTFILES/local/bin"
+	export DOTFILES_BIN="$DOTFILES/bin"
+	pathadd "$DOTFILES_BIN"
 fi
 
 # zgen
-export ZGEN_HOME=${ZGEN_HOME:="/usr/local/opt/zgen"}
-export ZGEN_AUTOLOAD_COMPINIT=0
+# export ZGEN_HOME=${ZGEN_HOME:="/usr/local/opt/zgen"}
+# export ZGEN_AUTOLOAD_COMPINIT=0
 
-if [ -f ~/.zgenrc ]; then
-	ZGEN_RESET_ON_CHANGE=(~/.zgenrc)
-	source ~/.zgenrc
+# if [ -f ~/.zgenrc ]; then
+# 	ZGEN_RESET_ON_CHANGE=(~/.zgenrc)
+# 	source ~/.zgenrc
+# fi
+
+# antibody
+if [ $commands[antibody] ]; then
+	# compinit
+	autoload -Uz compinit
+	for dump in ~/.zcompdump(N.mh+24); do
+		compinit
+	done
+	compinit -C
+
+	source ~/.antibodyrc
 fi
+
+pathadd "/usr/local/sbin"
 
 # homebrew
 if [ $commands[brew] ]; then
@@ -67,10 +81,6 @@ if [ $commands[hub] ]; then
 	eval "$(hub alias -s)"
 fi
 
-if [ $commands[thefuck] ]; then
-	eval $(thefuck --alias fuck)
-fi
-
 if [ $commands[direnv] ]; then
 	eval "$(direnv hook zsh)"
 fi
@@ -85,6 +95,7 @@ if [ $commands[jenv] ]; then
 fi
 
 if [ $commands[nodenv] ]; then
+	export NODE_BUILD_DEFINITIONS="$(brew --prefix node-build-update-defs)/share/node-build"
 	eval "$(nodenv init - --no-rehash)"
 fi
 
@@ -103,8 +114,6 @@ if [ $commands[wine] ]; then
 		WINEPREFIX=$HOME/.wine32 wine "$@"
 	}
 fi
-
-export PATH="/usr/local/sbin:$PATH"
 
 # export ANDROID_HOME=${ANDROID_HOME:="/usr/local/share/android-sdk"}
 

@@ -1,5 +1,5 @@
 #!/bin/sh
 brew cleanup -s;
 if [[ $1 == "--cache" ]]; then
-    rm -rf $(brew --cache)/*
+    rm -rfv $(brew --cache)
 fi
