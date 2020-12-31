@@ -1,29 +1,25 @@
-[user]
-	email = jacobfoster@pm.me
-	name = jfoster
-	signingkey = 338DF109
-[push]
-	default = simple
+[alias]
+	resign = "!f() { git filter-branch -f --commit-filter 'if [ "$GIT_COMMITTER_EMAIL" = "$1" ] then git commit-tree -S "$@"; fi' -- --all; }; f"
+	unadd = reset HEAD
 [commit]
 	gpgsign = true
 [core]
+	autocrlf = input
 	editor = vim
 	excludesfile = ~/.gitignore_global
 	hooksPath = ~/.git-templates/hooks/
 	pager = diff-so-fancy | less --tabs=4 -RFX
-	autocrlf = input
-[alias]
-	archive-repo = "!f() { hub api -XPATCH repos/{owner}/{repo} -f archived=true > /dev/null; }; f"
-	private-repo = "!f() { hub api -XPATCH repos/{owner}/{repo} -f private=true > /dev/null; }; f"
-	public-repo = "!f() { hub api -XPATCH repos/{owner}/{repo} -f private=false > /dev/null; }; f"
-	rename-repo = "!f() { hub api -t -XPATCH repos/{owner}/{repo} -f name=$1 | grep .svn_url | awk '/.svn_url/ {print $2}' | xargs git remote set-url origin; }; f"
-	create = "!f() { hub create && git push --set-upstream origin master; }; f"
-	resign = "!f() { git filter-branch -f --commit-filter 'if [ "$GIT_COMMITTER_EMAIL" = "$1" ] then git commit-tree -S "$@"; fi' -- --all; }; f"
-	unadd = reset HEAD
-[hub]
-	protocol = https
-[gpg]
-	program = gpg
 [credential]
 	helper = osxkeychain
- 
+[gpg]
+	program = gpg
+[hub]
+	protocol = https
+[init]
+	defaultBranch = main
+[push]
+	default = simple
+[user]
+	email = jacobfoster@pm.me
+	name = jfoster
+	signingkey = 338DF109

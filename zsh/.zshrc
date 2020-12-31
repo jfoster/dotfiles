@@ -77,43 +77,43 @@ if [ $commands[term] ]; then
 	alias term="term -t"
 fi
 
-if [ $commands[hub] ]; then
-	eval "$(hub alias -s)"
-fi
+# if [ $commands[hub] ]; then
+# 	eval "$(hub alias -s)"
+# fi
 
 if [ $commands[direnv] ]; then
 	eval "$(direnv hook zsh)"
 fi
 
-if [ $commands[goenv] ]; then
-	export GOENV_GOPATH_PREFIX="${GOPATH}"
-	eval "$(goenv init - --no-rehash)"
-fi
+# if [ $commands[goenv] ]; then
+# 	export GOENV_GOPATH_PREFIX="${GOPATH}"
+# 	eval "$(goenv init - --no-rehash)"
+# fi
 
-if [ $commands[jenv] ]; then
-	eval "$(jenv init - --no-rehash)"
-fi
+# if [ $commands[jenv] ]; then
+# 	eval "$(jenv init - --no-rehash)"
+# fi
 
-if [ $commands[nodenv] ]; then
-	export NODE_BUILD_DEFINITIONS="$(brew --prefix node-build-update-defs)/share/node-build"
-	eval "$(nodenv init - --no-rehash)"
-fi
+# if [ $commands[nodenv] ]; then
+# 	export NODE_BUILD_DEFINITIONS="$(brew --prefix node-build-update-defs)/share/node-build"
+# 	eval "$(nodenv init - --no-rehash)"
+# fi
 
-if [ $commands[pyenv] ]; then
-	eval "$(pyenv init - --no-rehash)"
-fi
+# if [ $commands[pyenv] ]; then
+# 	eval "$(pyenv init - --no-rehash)"
+# fi
 
-if [ $commands[rbenv] ]; then
-	local RBENV_SHIMS="${RBENV_ROOT:-${HOME}/.rbenv}/shims"
-	export PATH="${RBENV_SHIMS}:${PATH}"
-	eval "$(rbenv init - --no-rehash)"
-fi
+# if [ $commands[rbenv] ]; then
+# 	local RBENV_SHIMS="${RBENV_ROOT:-${HOME}/.rbenv}/shims"
+# 	export PATH="${RBENV_SHIMS}:${PATH}"
+# 	eval "$(rbenv init - --no-rehash)"
+# fi
 
-if [ $commands[wine] ]; then
-	wine32() {
-		WINEPREFIX=$HOME/.wine32 wine "$@"
-	}
-fi
+# if [ $commands[wine] ]; then
+# 	wine32() {
+# 		WINEPREFIX=$HOME/.wine32 wine "$@"
+# 	}
+# fi
 
 # export ANDROID_HOME=${ANDROID_HOME:="/usr/local/share/android-sdk"}
 
